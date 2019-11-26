@@ -4,6 +4,8 @@ const Mutation = require("../src/resolvers/Mutation");
 const Query = require("../src/resolvers/Query");
 const db = require("../src/db");
 
+jest.mock("../src/db", () => jest.fn());
+
 describe("createServer", () => {
   it("should return a new instance of an ApolloServer", () => {
     expect(createServer().constructor.name).toBe("ApolloServer");
