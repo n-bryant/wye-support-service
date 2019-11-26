@@ -1,0 +1,44 @@
+{
+  "name": "wye-support-service",
+  "version": "1.0.0",
+  "description": "Captures and stores steam game data, and provides endpoints for access to data for Wye",
+  "repository": "https://github.com/n-bryant/wye-support-service.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon -e js,graphql -x node src/index.js",
+    "dev": "nodemon -e js,graphql -x node --inspect src/index.js",
+    "test": "jest",
+    "deploy": "prisma deploy --env-file variables.env"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "dotenv": "6.0.0",
+    "graphql": "^0.13.2",
+    "graphql-cli": "^2.16.7",
+    "nodemon": "^1.18.7",
+    "npm-run-all": "^4.1.5",
+    "prisma": "1.17.1",
+    "prisma-binding": "2.1.6"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
