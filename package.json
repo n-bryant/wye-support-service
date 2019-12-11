@@ -5,28 +5,26 @@
   "repository": "https://github.com/n-bryant/wye-support-service.git",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon -e js,graphql -x node src/index.js",
-    "debug": "nodemon -e js,graphql -x node --inspect src/index.js",
+    "start": "nodemon -e js src/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "playground": "graphql playground --dotenv variables.env",
     "deploy": "prisma deploy --env-file variables.env",
-    "dev": "npm-run-all --parallel debug playground"
+    "dev": "nodemon -e js --inspect src/index.js"
   },
   "dependencies": {
     "@babel/core": "^7.7.2",
     "@babel/node": "^7.7.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.7.1",
-    "apollo-datasource-rest": "^0.6.9",
-    "apollo-server": "^2.9.12",
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
     "dotenv": "6.0.0",
-    "graphql": "^0.13.2",
-    "graphql-cli": "^2.16.7",
+    "express": "^4.17.1",
+    "lodash.get": "^4.4.2",
+    "moment": "^2.24.0",
+    "node-cron": "^2.0.3",
     "nodemon": "^1.18.7",
-    "npm-run-all": "^4.1.5",
-    "prisma": "1.32.0-beta",
-    "prisma-binding": "^2.3.16"
+    "prisma": "1.32.0-beta"
   },
   "babel": {
     "presets": [

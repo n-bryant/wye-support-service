@@ -1,4 +1,30 @@
-type User {
+enum JobStatus {
+  RUNNING
+  COMPLETE
+  ERROR
+}
+
+type Game {
   id: ID! @id
+  appid: String! @unique
   name: String!
+  developers: String!
+  publishers: String!
+  genres: String!
+  tags: String!
+  freeToPlay: Boolean!
+  onSale: Boolean!
+  discount: Int!
+  initialPrice: Int!
+  finalPrice: Int!
+  userRating: Int!
+  logoImageUrl: String!
+  heroImageUrl: String!
+}
+
+type Job {
+  id: ID! @id
+  createdTime: String!
+  completedTime: String
+  status: JobStatus!
 }
