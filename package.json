@@ -5,11 +5,11 @@
   "repository": "https://github.com/n-bryant/wye-support-service.git",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon -e js src/index.js",
+    "start": "nodemon -e js src/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "deploy": "prisma deploy --env-file variables.env",
-    "dev": "nodemon -e js --inspect src/index.js"
+    "dev": "nodemon -e js --inspect src/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.7.2",
@@ -24,7 +24,8 @@
     "moment": "^2.24.0",
     "node-cron": "^2.0.3",
     "nodemon": "^1.18.7",
-    "prisma": "1.32.0-beta"
+    "prisma": "1.32.0-beta",
+    "supertest": "^4.0.2"
   },
   "babel": {
     "presets": [

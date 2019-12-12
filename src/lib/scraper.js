@@ -106,6 +106,7 @@ const runCron = async () => {
   // then write the formatted data to the db
   // - filter out games that are not tagged as multiplayer
   if (gameList.length) {
+    console.log("in");
     for (let i = 0; i < gameList.length; i++) {
       // for (let i = 0; i < 5; i++) {
       // ^^^^^^ CHANGE THIS TO ITERATE OVER ALL OF gameList ONCE TESTED ^^^^^^^^
@@ -134,7 +135,7 @@ const runCron = async () => {
       await prisma.updateJob({
         data: {
           completedTime: moment().format(),
-          status: gameList.length ? "ERROR" : "COMPLETE"
+          status: gameList.length ? "COMPLETE" : "ERROR"
         },
         where: {
           id: job.id
