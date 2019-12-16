@@ -2,21 +2,34 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config({ path: "variables.env" });
 const { prisma } = require("./generated/js/index.js");
+const constants = require("./lib/constants");
+const { ERRORS } = constants;
 
 const app = express();
+
+// set cors policy
 app.use(cors({ origin: process.env.ORIGIN_URL }));
+// parse the request body as JSON.
+app.use(express.json());
 
 // endpoint to provide games data
-app.get("/games", async (req, res, next) => {
-  const { gameids } = req.query;
+app.post("/games", async (req, res, next) => {
+  const { gameids, filters = {}, first, after, orderBy } = req.body;
+
   let games = [];
-  if (gameids && typeof gameids === "string" && gameids.length) {
+  if (gameids && gameids.length) {
+    const config = {
+      where: {
+        appid_in: gameids,
+        ...filters
+      },
+      first,
+      after,
+      orderBy
+    };
+
     try {
-      games = await prisma.games({
-        where: {
-          appid_in: gameids.split(",")
-        }
-      });
+      games = await prisma.games(config);
       res.json({ games });
     } catch (e) {
       console.log(e);
@@ -24,7 +37,7 @@ app.get("/games", async (req, res, next) => {
       next();
     }
   } else {
-    res.json({ error: "NO_GAMES" });
+    res.json({ error: ERRORS.NO_GAMES_FOUND });
   }
 });
 
