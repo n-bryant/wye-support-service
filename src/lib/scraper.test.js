@@ -96,6 +96,30 @@ describe("runCron", () => {
     );
   });
 
+  it("should set the error for finding no tags if no tags were scraped", async () => {
+    const id = "foo";
+    getGameList.mockReset();
+    createJob.mockImplementationOnce(() => Promise.resolve({ id }));
+    getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
+    getCategoryTypeList
+      .mockImplementationOnce(() => Promise.resolve({}))
+      .mockImplementationOnce(() => Promise.resolve(genreList));
+    await runCron();
+    expect(completeJob).toHaveBeenCalledWith(id, [ERRORS.NO_TAGS_FOUND]);
+  });
+
+  it("should set the error for finding no genres if no genres were scraped", async () => {
+    const id = "foo";
+    getGameList.mockReset();
+    createJob.mockImplementationOnce(() => Promise.resolve({ id }));
+    getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
+    getGameIdsForCategory
+      .mockImplementationOnce(() => Promise.resolve(tagList))
+      .mockImplementationOnce(() => Promise.resolve({}));
+    await runCron();
+    expect(completeJob).toHaveBeenCalledWith(id, [ERRORS.NO_GENRES_FOUND]);
+  });
+
   it("should build tag and genre lists for the games if the games list has length", async () => {
     await runCron();
     expect(getCategoryTypesForGame).not.toHaveBeenCalled();
@@ -133,6 +157,9 @@ describe("runCron", () => {
     getGameList.mockReset();
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
     createJob.mockImplementationOnce(() => Promise.resolve({ id }));
+    getGameIdsForCategory
+      .mockImplementationOnce(() => Promise.resolve(tagList))
+      .mockImplementationOnce(() => Promise.resolve(genreList));
     await runCron();
     expect(completeJob).toHaveBeenCalledWith(id, []);
   });

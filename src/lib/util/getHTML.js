@@ -8,7 +8,7 @@ const get = require("lodash.get");
  */
 const getHTML = async url => {
   const response = await axios.get(url);
-  return get(response, ["data", "html"], "");
+  return get(response, "data", "");
 };
 
 module.exports = getHTML;

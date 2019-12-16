@@ -13,7 +13,7 @@ const getCategoryNames = async (html, selector) => {
   const $ = cheerio.load(html);
   const categoryElement = $(selector);
   categoryElement.map((_i, el) => {
-    categoryNames.push(encodeURIComponent($(el).text()));
+    categoryNames.push($(el).text());
   });
 
   return categoryNames;
