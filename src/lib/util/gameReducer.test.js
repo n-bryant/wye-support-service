@@ -7,11 +7,8 @@ describe("gameReducer", () => {
     name: "name",
     developer: "developer 1, developer 2",
     publisher: "publisher 1, publisher 2",
-    genre: "genre 1, genre 2",
-    tags: {
-      tag1: 123,
-      tag2: 321
-    },
+    genres: ["foo", "bar"],
+    tags: ["foo", "bar"],
     price: "100",
     discount: "0",
     initialprice: "100",
@@ -24,15 +21,18 @@ describe("gameReducer", () => {
     expect(result.appid).toBe(game.appid.toString());
   });
 
-  it("should set the returned name, developers, publishers, and genres to the game's values for these fields", () => {
+  it("should set the returned name, developers, and publishers to the game's values for these fields", () => {
     expect(result.name).toBe(game.name);
     expect(result.developers).toBe(game.developer);
     expect(result.publishers).toBe(game.publisher);
-    expect(result.genres).toBe(game.genre);
+  });
+
+  it("should set the returned genres to the game's joined genres value", () => {
+    expect(result.genres).toBe(game.genres.join(", "));
   });
 
   it("should set the returned tags to the keys of the game's tags value", () => {
-    expect(result.tags).toBe("tag1, tag2");
+    expect(result.tags).toBe(game.tags.join(", "));
   });
 
   it("should base the freeToplay value on the game's price value", () => {
