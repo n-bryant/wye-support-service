@@ -5,17 +5,17 @@
  * @returns {Array}
  */
 const getCategoryTypesForGame = (appid, typeList = {}) => {
-  let types = [];
-  const keys = Object.keys(typeList);
+  let gameTypes = [];
+  const availableTypes = Object.keys(typeList);
 
   // add any types that have matches for the given appid
-  for (let i = 0; i < keys.length; i++) {
-    if (typeList[keys[i]].some(game => (game.appid = appid))) {
-      types.push(keys[i]);
+  for (let i = 0; i < availableTypes.length; i++) {
+    if (typeList[availableTypes[i]].some(gameId => gameId === appid)) {
+      gameTypes.push(availableTypes[i]);
     }
   }
 
-  return types;
+  return gameTypes;
 };
 
 module.exports = getCategoryTypesForGame;

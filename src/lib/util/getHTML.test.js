@@ -7,9 +7,7 @@ describe("getHTML", () => {
   it("should return the html contents of the provided url", async () => {
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({
-        data: {
-          html
-        }
+        data: html
       })
     );
     const result = await getHTML("url");

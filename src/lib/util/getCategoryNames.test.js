@@ -9,10 +9,10 @@ const html = `
   </div>
 `;
 const selector = `.${className}`;
-const expectedResult = ["fizz", "fizz%20buzz", "buzz"];
+const expectedResult = ["fizz", "fizz buzz", "buzz"];
 
 describe("getCategoryNames", () => {
-  it("should return a list of URI encoded strings", async () => {
+  it("should return a list of category names", async () => {
     const result = await getCategoryNames(html, selector);
     expect(result).toEqual(expectedResult);
   });

@@ -19,7 +19,7 @@ const getGameList = async () => {
     });
     const data = get(response, "data", {});
     gameList = Object.keys(data).map(key => data[key]);
-    console.log("Full game list retrieved 👍");
+    console.log(`Full game list retrieved 👍: ${gameList.length} games`);
   } catch (e) {
     console.log("Full game list retrieval error: ", e);
   }
