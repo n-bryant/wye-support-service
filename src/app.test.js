@@ -49,4 +49,12 @@ describe("app", () => {
     const response = await request.post("/games");
     expect(response.body.error).toBeDefined();
   });
+
+  it.only("should have the /games endpoint call the prisma game's endpoint with an empty where object if no gameids or filters are provided", async () => {
+    const response = await request.post("/games").send();
+    expect(response.status).toBe(200);
+    expect(prisma.games).toHaveBeenCalledWith({
+      where: {}
+    });
+  });
 });
