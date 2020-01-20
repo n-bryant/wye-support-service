@@ -17,27 +17,23 @@ app.post("/games", async (req, res, next) => {
   const { gameids, filters = {}, first, after, orderBy } = req.body;
 
   let games = [];
-  if (gameids && gameids.length) {
-    const config = {
-      where: {
-        appid_in: gameids,
-        ...filters
-      },
-      first,
-      after,
-      orderBy
-    };
+  const config = {
+    where: {
+      appid_in: gameids && gameids.length ? gameids : undefined,
+      ...filters
+    },
+    first,
+    after,
+    orderBy
+  };
 
-    try {
-      games = await prisma.games(config);
-      res.json({ games });
-    } catch (e) {
-      console.log(e);
-      res.json({ error: e });
-      next();
-    }
-  } else {
-    res.json({ error: ERRORS.NO_GAMES_FOUND });
+  try {
+    games = await prisma.games(config);
+    res.json({ games });
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e });
+    next();
   }
 });
 
