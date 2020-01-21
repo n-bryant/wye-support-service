@@ -32,6 +32,9 @@ const gameReducer = game => {
     initialPrice: parseInt(game.initialprice, 10),
     finalPrice: parseInt(game.price, 10),
     userRating: getUserRatingPercentage(game.positive, game.negative),
+    playtime2Weeks: game.average_2weeks,
+    playtimeForever: game.average_forever,
+    owners: game.owners,
     heroImageUrl: `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_hero.jpg`,
     logoImageUrl: `${GAME_IMAGES_BASE_URL}${game["appid"]}/logo.png`
   };

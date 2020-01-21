@@ -13,7 +13,11 @@ describe("gameReducer", () => {
     discount: "0",
     initialprice: "100",
     positive: 300,
-    negative: 50
+    negative: 50,
+    average_2weeks: 10,
+    average_forever: 200,
+    ccu: 42,
+    owners: 50
   };
   const result = gameReducer(game);
 
@@ -25,6 +29,18 @@ describe("gameReducer", () => {
     expect(result.name).toBe(game.name);
     expect(result.developers).toBe(game.developer);
     expect(result.publishers).toBe(game.publisher);
+  });
+
+  it("should set the returned owners to the game's value for that field", () => {
+    expect(result.owners).toBe(game.owners);
+  });
+
+  it("should set the playtime2Weeks value to the received average_2weeks value", () => {
+    expect(result.playtime2Weeks).toBe(game.average_2weeks);
+  });
+
+  it("should set the playtimeForever value to the received average_forever value", () => {
+    expect(result.playtimeForever).toBe(game.average_forever);
   });
 
   it("should set the returned genres to the game's joined genres value", () => {
