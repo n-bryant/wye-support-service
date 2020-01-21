@@ -2,8 +2,6 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config({ path: "variables.env" });
 const { prisma } = require("./generated/js/index.js");
-const constants = require("./lib/constants");
-const { ERRORS } = constants;
 
 const app = express();
 

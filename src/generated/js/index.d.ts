@@ -165,6 +165,12 @@ export type GameOrderByInput =
   | "finalPrice_DESC"
   | "userRating_ASC"
   | "userRating_DESC"
+  | "playtime2Weeks_ASC"
+  | "playtime2Weeks_DESC"
+  | "playtimeForever_ASC"
+  | "playtimeForever_DESC"
+  | "owners_ASC"
+  | "owners_DESC"
   | "logoImageUrl_ASC"
   | "logoImageUrl_DESC"
   | "heroImageUrl_ASC"
@@ -335,6 +341,36 @@ export interface GameWhereInput {
   userRating_lte?: Int;
   userRating_gt?: Int;
   userRating_gte?: Int;
+  playtime2Weeks?: Int;
+  playtime2Weeks_not?: Int;
+  playtime2Weeks_in?: Int[] | Int;
+  playtime2Weeks_not_in?: Int[] | Int;
+  playtime2Weeks_lt?: Int;
+  playtime2Weeks_lte?: Int;
+  playtime2Weeks_gt?: Int;
+  playtime2Weeks_gte?: Int;
+  playtimeForever?: Int;
+  playtimeForever_not?: Int;
+  playtimeForever_in?: Int[] | Int;
+  playtimeForever_not_in?: Int[] | Int;
+  playtimeForever_lt?: Int;
+  playtimeForever_lte?: Int;
+  playtimeForever_gt?: Int;
+  playtimeForever_gte?: Int;
+  owners?: String;
+  owners_not?: String;
+  owners_in?: String[] | String;
+  owners_not_in?: String[] | String;
+  owners_lt?: String;
+  owners_lte?: String;
+  owners_gt?: String;
+  owners_gte?: String;
+  owners_contains?: String;
+  owners_not_contains?: String;
+  owners_starts_with?: String;
+  owners_not_starts_with?: String;
+  owners_ends_with?: String;
+  owners_not_ends_with?: String;
   logoImageUrl?: String;
   logoImageUrl_not?: String;
   logoImageUrl_in?: String[] | String;
@@ -451,6 +487,9 @@ export interface GameCreateInput {
   initialPrice: Int;
   finalPrice: Int;
   userRating: Int;
+  playtime2Weeks: Int;
+  playtimeForever: Int;
+  owners: String;
   logoImageUrl: String;
   heroImageUrl: String;
 }
@@ -474,6 +513,9 @@ export interface GameUpdateInput {
   initialPrice?: Int;
   finalPrice?: Int;
   userRating?: Int;
+  playtime2Weeks?: Int;
+  playtimeForever?: Int;
+  owners?: String;
   logoImageUrl?: String;
   heroImageUrl?: String;
 }
@@ -491,6 +533,9 @@ export interface GameUpdateManyMutationInput {
   initialPrice?: Int;
   finalPrice?: Int;
   userRating?: Int;
+  playtime2Weeks?: Int;
+  playtimeForever?: Int;
+  owners?: String;
   logoImageUrl?: String;
   heroImageUrl?: String;
 }
@@ -656,6 +701,9 @@ export interface Game {
   initialPrice: Int;
   finalPrice: Int;
   userRating: Int;
+  playtime2Weeks: Int;
+  playtimeForever: Int;
+  owners: String;
   logoImageUrl: String;
   heroImageUrl: String;
 }
@@ -674,6 +722,9 @@ export interface GamePromise extends Promise<Game>, Fragmentable {
   initialPrice: () => Promise<Int>;
   finalPrice: () => Promise<Int>;
   userRating: () => Promise<Int>;
+  playtime2Weeks: () => Promise<Int>;
+  playtimeForever: () => Promise<Int>;
+  owners: () => Promise<String>;
   logoImageUrl: () => Promise<String>;
   heroImageUrl: () => Promise<String>;
 }
@@ -694,6 +745,9 @@ export interface GameSubscription
   initialPrice: () => Promise<AsyncIterator<Int>>;
   finalPrice: () => Promise<AsyncIterator<Int>>;
   userRating: () => Promise<AsyncIterator<Int>>;
+  playtime2Weeks: () => Promise<AsyncIterator<Int>>;
+  playtimeForever: () => Promise<AsyncIterator<Int>>;
+  owners: () => Promise<AsyncIterator<String>>;
   logoImageUrl: () => Promise<AsyncIterator<String>>;
   heroImageUrl: () => Promise<AsyncIterator<String>>;
 }
@@ -712,6 +766,9 @@ export interface GamePreviousValues {
   initialPrice: Int;
   finalPrice: Int;
   userRating: Int;
+  playtime2Weeks: Int;
+  playtimeForever: Int;
+  owners: String;
   logoImageUrl: String;
   heroImageUrl: String;
 }
@@ -732,6 +789,9 @@ export interface GamePreviousValuesPromise
   initialPrice: () => Promise<Int>;
   finalPrice: () => Promise<Int>;
   userRating: () => Promise<Int>;
+  playtime2Weeks: () => Promise<Int>;
+  playtimeForever: () => Promise<Int>;
+  owners: () => Promise<String>;
   logoImageUrl: () => Promise<String>;
   heroImageUrl: () => Promise<String>;
 }
@@ -752,6 +812,9 @@ export interface GamePreviousValuesSubscription
   initialPrice: () => Promise<AsyncIterator<Int>>;
   finalPrice: () => Promise<AsyncIterator<Int>>;
   userRating: () => Promise<AsyncIterator<Int>>;
+  playtime2Weeks: () => Promise<AsyncIterator<Int>>;
+  playtimeForever: () => Promise<AsyncIterator<Int>>;
+  owners: () => Promise<AsyncIterator<String>>;
   logoImageUrl: () => Promise<AsyncIterator<String>>;
   heroImageUrl: () => Promise<AsyncIterator<String>>;
 }

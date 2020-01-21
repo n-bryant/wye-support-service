@@ -6,19 +6,39 @@ enum JobStatus {
 
 type Game {
   id: ID! @id
+  # the game's steam app id
   appid: String! @unique
+  # the game's name
   name: String!
+  # a list of the game's developers
   developers: String!
+  # a list of the game's publishers
   publishers: String!
+  # a list of the game's genres
   genres: String!
+  # a list of the game's tags
   tags: String!
+  # whether the game is free to play
   freeToPlay: Boolean!
+  # whether the game is on sale
   onSale: Boolean!
+  # discount percentage
   discount: Int!
+  # inital price of the game
   initialPrice: Int!
+  # price of the game after discount applied
   finalPrice: Int!
+  # percentage of positive vs negative votes for the game
   userRating: Int!
+  # average playtime in the last 2 weeks in minutes
+  playtime2Weeks: Int!
+  # playtime since March 2009 in minutes
+  playtimeForever: Int!
+  # range of owner count
+  owners: String!
+  # logo image path
   logoImageUrl: String!
+  # hero image path
   heroImageUrl: String!
 }
 

@@ -23,7 +23,8 @@ const MULTIPLAYER_TAGS = [
   "MMORPG",
   "Multiplayer",
   "Online Co-Op",
-  "Split Screen"
+  "Split Screen",
+  "4 Player Local"
 ];
 
 const GAME_IMAGES_BASE_URL = "http://steamcdn-a.akamaihd.net/steam/apps/";
