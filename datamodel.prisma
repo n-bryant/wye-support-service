@@ -36,10 +36,26 @@ type Game {
   playtimeForever: Int!
   # range of owner count
   owners: String!
-  # logo image path
-  logoImageUrl: String!
-  # hero image path
-  heroImageUrl: String!
+  # location of the game's header image
+  headerImage: String
+  # game page background image location
+  backgroundImage: String
+  # left broadcast image panel location
+  broadcastLeftImage: String
+  # right broadcast image panel location
+  broadcastRightImage: String
+  # location of small capsule
+  capsuleSm: String
+  # location of med capsule
+  capsuleMd: String
+  # location of lg capsule
+  capsuleLg: String
+  # location of the game's logo
+  logo: String
+  # location of the game's library capsule image
+  libraryCapsule: String
+  # location of the game's library hero image
+  libraryHero: String
 }
 
 type Job {

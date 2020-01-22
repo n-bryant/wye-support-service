@@ -35,8 +35,16 @@ const gameReducer = game => {
     playtime2Weeks: game.average_2weeks,
     playtimeForever: game.average_forever,
     owners: game.owners,
-    heroImageUrl: `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_hero.jpg`,
-    logoImageUrl: `${GAME_IMAGES_BASE_URL}${game["appid"]}/logo.png`
+    headerImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/header.jpg`,
+    backgroundImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/page_bg_generated_v6b.jpg`,
+    broadcastLeftImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/broadcast_left_panel.jpg`,
+    broadcastRightImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/broadcast_right_panel.jpg`,
+    capsuleSm: `${GAME_IMAGES_BASE_URL}${game["appid"]}/capsule_231x87.jpg`,
+    capsuleMd: `${GAME_IMAGES_BASE_URL}${game["appid"]}/capsule_467x181.jpg`,
+    capsuleLg: `${GAME_IMAGES_BASE_URL}${game["appid"]}/capsule_616x353.jpg`,
+    logo: `${GAME_IMAGES_BASE_URL}${game["appid"]}/logo.png`,
+    libraryCapsule: `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_600x900.jpg`,
+    libraryHero: `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_hero.jpg`
   };
 };
 

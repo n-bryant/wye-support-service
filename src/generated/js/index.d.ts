@@ -171,10 +171,26 @@ export type GameOrderByInput =
   | "playtimeForever_DESC"
   | "owners_ASC"
   | "owners_DESC"
-  | "logoImageUrl_ASC"
-  | "logoImageUrl_DESC"
-  | "heroImageUrl_ASC"
-  | "heroImageUrl_DESC";
+  | "headerImage_ASC"
+  | "headerImage_DESC"
+  | "backgroundImage_ASC"
+  | "backgroundImage_DESC"
+  | "broadcastLeftImage_ASC"
+  | "broadcastLeftImage_DESC"
+  | "broadcastRightImage_ASC"
+  | "broadcastRightImage_DESC"
+  | "capsuleSm_ASC"
+  | "capsuleSm_DESC"
+  | "capsuleMd_ASC"
+  | "capsuleMd_DESC"
+  | "capsuleLg_ASC"
+  | "capsuleLg_DESC"
+  | "logo_ASC"
+  | "logo_DESC"
+  | "libraryCapsule_ASC"
+  | "libraryCapsule_DESC"
+  | "libraryHero_ASC"
+  | "libraryHero_DESC";
 
 export type JobStatus = "RUNNING" | "COMPLETE" | "ERROR";
 
@@ -371,34 +387,146 @@ export interface GameWhereInput {
   owners_not_starts_with?: String;
   owners_ends_with?: String;
   owners_not_ends_with?: String;
-  logoImageUrl?: String;
-  logoImageUrl_not?: String;
-  logoImageUrl_in?: String[] | String;
-  logoImageUrl_not_in?: String[] | String;
-  logoImageUrl_lt?: String;
-  logoImageUrl_lte?: String;
-  logoImageUrl_gt?: String;
-  logoImageUrl_gte?: String;
-  logoImageUrl_contains?: String;
-  logoImageUrl_not_contains?: String;
-  logoImageUrl_starts_with?: String;
-  logoImageUrl_not_starts_with?: String;
-  logoImageUrl_ends_with?: String;
-  logoImageUrl_not_ends_with?: String;
-  heroImageUrl?: String;
-  heroImageUrl_not?: String;
-  heroImageUrl_in?: String[] | String;
-  heroImageUrl_not_in?: String[] | String;
-  heroImageUrl_lt?: String;
-  heroImageUrl_lte?: String;
-  heroImageUrl_gt?: String;
-  heroImageUrl_gte?: String;
-  heroImageUrl_contains?: String;
-  heroImageUrl_not_contains?: String;
-  heroImageUrl_starts_with?: String;
-  heroImageUrl_not_starts_with?: String;
-  heroImageUrl_ends_with?: String;
-  heroImageUrl_not_ends_with?: String;
+  headerImage?: String;
+  headerImage_not?: String;
+  headerImage_in?: String[] | String;
+  headerImage_not_in?: String[] | String;
+  headerImage_lt?: String;
+  headerImage_lte?: String;
+  headerImage_gt?: String;
+  headerImage_gte?: String;
+  headerImage_contains?: String;
+  headerImage_not_contains?: String;
+  headerImage_starts_with?: String;
+  headerImage_not_starts_with?: String;
+  headerImage_ends_with?: String;
+  headerImage_not_ends_with?: String;
+  backgroundImage?: String;
+  backgroundImage_not?: String;
+  backgroundImage_in?: String[] | String;
+  backgroundImage_not_in?: String[] | String;
+  backgroundImage_lt?: String;
+  backgroundImage_lte?: String;
+  backgroundImage_gt?: String;
+  backgroundImage_gte?: String;
+  backgroundImage_contains?: String;
+  backgroundImage_not_contains?: String;
+  backgroundImage_starts_with?: String;
+  backgroundImage_not_starts_with?: String;
+  backgroundImage_ends_with?: String;
+  backgroundImage_not_ends_with?: String;
+  broadcastLeftImage?: String;
+  broadcastLeftImage_not?: String;
+  broadcastLeftImage_in?: String[] | String;
+  broadcastLeftImage_not_in?: String[] | String;
+  broadcastLeftImage_lt?: String;
+  broadcastLeftImage_lte?: String;
+  broadcastLeftImage_gt?: String;
+  broadcastLeftImage_gte?: String;
+  broadcastLeftImage_contains?: String;
+  broadcastLeftImage_not_contains?: String;
+  broadcastLeftImage_starts_with?: String;
+  broadcastLeftImage_not_starts_with?: String;
+  broadcastLeftImage_ends_with?: String;
+  broadcastLeftImage_not_ends_with?: String;
+  broadcastRightImage?: String;
+  broadcastRightImage_not?: String;
+  broadcastRightImage_in?: String[] | String;
+  broadcastRightImage_not_in?: String[] | String;
+  broadcastRightImage_lt?: String;
+  broadcastRightImage_lte?: String;
+  broadcastRightImage_gt?: String;
+  broadcastRightImage_gte?: String;
+  broadcastRightImage_contains?: String;
+  broadcastRightImage_not_contains?: String;
+  broadcastRightImage_starts_with?: String;
+  broadcastRightImage_not_starts_with?: String;
+  broadcastRightImage_ends_with?: String;
+  broadcastRightImage_not_ends_with?: String;
+  capsuleSm?: String;
+  capsuleSm_not?: String;
+  capsuleSm_in?: String[] | String;
+  capsuleSm_not_in?: String[] | String;
+  capsuleSm_lt?: String;
+  capsuleSm_lte?: String;
+  capsuleSm_gt?: String;
+  capsuleSm_gte?: String;
+  capsuleSm_contains?: String;
+  capsuleSm_not_contains?: String;
+  capsuleSm_starts_with?: String;
+  capsuleSm_not_starts_with?: String;
+  capsuleSm_ends_with?: String;
+  capsuleSm_not_ends_with?: String;
+  capsuleMd?: String;
+  capsuleMd_not?: String;
+  capsuleMd_in?: String[] | String;
+  capsuleMd_not_in?: String[] | String;
+  capsuleMd_lt?: String;
+  capsuleMd_lte?: String;
+  capsuleMd_gt?: String;
+  capsuleMd_gte?: String;
+  capsuleMd_contains?: String;
+  capsuleMd_not_contains?: String;
+  capsuleMd_starts_with?: String;
+  capsuleMd_not_starts_with?: String;
+  capsuleMd_ends_with?: String;
+  capsuleMd_not_ends_with?: String;
+  capsuleLg?: String;
+  capsuleLg_not?: String;
+  capsuleLg_in?: String[] | String;
+  capsuleLg_not_in?: String[] | String;
+  capsuleLg_lt?: String;
+  capsuleLg_lte?: String;
+  capsuleLg_gt?: String;
+  capsuleLg_gte?: String;
+  capsuleLg_contains?: String;
+  capsuleLg_not_contains?: String;
+  capsuleLg_starts_with?: String;
+  capsuleLg_not_starts_with?: String;
+  capsuleLg_ends_with?: String;
+  capsuleLg_not_ends_with?: String;
+  logo?: String;
+  logo_not?: String;
+  logo_in?: String[] | String;
+  logo_not_in?: String[] | String;
+  logo_lt?: String;
+  logo_lte?: String;
+  logo_gt?: String;
+  logo_gte?: String;
+  logo_contains?: String;
+  logo_not_contains?: String;
+  logo_starts_with?: String;
+  logo_not_starts_with?: String;
+  logo_ends_with?: String;
+  logo_not_ends_with?: String;
+  libraryCapsule?: String;
+  libraryCapsule_not?: String;
+  libraryCapsule_in?: String[] | String;
+  libraryCapsule_not_in?: String[] | String;
+  libraryCapsule_lt?: String;
+  libraryCapsule_lte?: String;
+  libraryCapsule_gt?: String;
+  libraryCapsule_gte?: String;
+  libraryCapsule_contains?: String;
+  libraryCapsule_not_contains?: String;
+  libraryCapsule_starts_with?: String;
+  libraryCapsule_not_starts_with?: String;
+  libraryCapsule_ends_with?: String;
+  libraryCapsule_not_ends_with?: String;
+  libraryHero?: String;
+  libraryHero_not?: String;
+  libraryHero_in?: String[] | String;
+  libraryHero_not_in?: String[] | String;
+  libraryHero_lt?: String;
+  libraryHero_lte?: String;
+  libraryHero_gt?: String;
+  libraryHero_gte?: String;
+  libraryHero_contains?: String;
+  libraryHero_not_contains?: String;
+  libraryHero_starts_with?: String;
+  libraryHero_not_starts_with?: String;
+  libraryHero_ends_with?: String;
+  libraryHero_not_ends_with?: String;
   AND?: GameWhereInput[] | GameWhereInput;
   OR?: GameWhereInput[] | GameWhereInput;
   NOT?: GameWhereInput[] | GameWhereInput;
@@ -490,8 +618,16 @@ export interface GameCreateInput {
   playtime2Weeks: Int;
   playtimeForever: Int;
   owners: String;
-  logoImageUrl: String;
-  heroImageUrl: String;
+  headerImage?: String;
+  backgroundImage?: String;
+  broadcastLeftImage?: String;
+  broadcastRightImage?: String;
+  capsuleSm?: String;
+  capsuleMd?: String;
+  capsuleLg?: String;
+  logo?: String;
+  libraryCapsule?: String;
+  libraryHero?: String;
 }
 
 export interface JobUpdateInput {
@@ -516,8 +652,16 @@ export interface GameUpdateInput {
   playtime2Weeks?: Int;
   playtimeForever?: Int;
   owners?: String;
-  logoImageUrl?: String;
-  heroImageUrl?: String;
+  headerImage?: String;
+  backgroundImage?: String;
+  broadcastLeftImage?: String;
+  broadcastRightImage?: String;
+  capsuleSm?: String;
+  capsuleMd?: String;
+  capsuleLg?: String;
+  logo?: String;
+  libraryCapsule?: String;
+  libraryHero?: String;
 }
 
 export interface GameUpdateManyMutationInput {
@@ -536,8 +680,16 @@ export interface GameUpdateManyMutationInput {
   playtime2Weeks?: Int;
   playtimeForever?: Int;
   owners?: String;
-  logoImageUrl?: String;
-  heroImageUrl?: String;
+  headerImage?: String;
+  backgroundImage?: String;
+  broadcastLeftImage?: String;
+  broadcastRightImage?: String;
+  capsuleSm?: String;
+  capsuleMd?: String;
+  capsuleLg?: String;
+  logo?: String;
+  libraryCapsule?: String;
+  libraryHero?: String;
 }
 
 export interface JobSubscriptionWhereInput {
@@ -704,8 +856,16 @@ export interface Game {
   playtime2Weeks: Int;
   playtimeForever: Int;
   owners: String;
-  logoImageUrl: String;
-  heroImageUrl: String;
+  headerImage?: String;
+  backgroundImage?: String;
+  broadcastLeftImage?: String;
+  broadcastRightImage?: String;
+  capsuleSm?: String;
+  capsuleMd?: String;
+  capsuleLg?: String;
+  logo?: String;
+  libraryCapsule?: String;
+  libraryHero?: String;
 }
 
 export interface GamePromise extends Promise<Game>, Fragmentable {
@@ -725,8 +885,16 @@ export interface GamePromise extends Promise<Game>, Fragmentable {
   playtime2Weeks: () => Promise<Int>;
   playtimeForever: () => Promise<Int>;
   owners: () => Promise<String>;
-  logoImageUrl: () => Promise<String>;
-  heroImageUrl: () => Promise<String>;
+  headerImage: () => Promise<String>;
+  backgroundImage: () => Promise<String>;
+  broadcastLeftImage: () => Promise<String>;
+  broadcastRightImage: () => Promise<String>;
+  capsuleSm: () => Promise<String>;
+  capsuleMd: () => Promise<String>;
+  capsuleLg: () => Promise<String>;
+  logo: () => Promise<String>;
+  libraryCapsule: () => Promise<String>;
+  libraryHero: () => Promise<String>;
 }
 
 export interface GameSubscription
@@ -748,8 +916,16 @@ export interface GameSubscription
   playtime2Weeks: () => Promise<AsyncIterator<Int>>;
   playtimeForever: () => Promise<AsyncIterator<Int>>;
   owners: () => Promise<AsyncIterator<String>>;
-  logoImageUrl: () => Promise<AsyncIterator<String>>;
-  heroImageUrl: () => Promise<AsyncIterator<String>>;
+  headerImage: () => Promise<AsyncIterator<String>>;
+  backgroundImage: () => Promise<AsyncIterator<String>>;
+  broadcastLeftImage: () => Promise<AsyncIterator<String>>;
+  broadcastRightImage: () => Promise<AsyncIterator<String>>;
+  capsuleSm: () => Promise<AsyncIterator<String>>;
+  capsuleMd: () => Promise<AsyncIterator<String>>;
+  capsuleLg: () => Promise<AsyncIterator<String>>;
+  logo: () => Promise<AsyncIterator<String>>;
+  libraryCapsule: () => Promise<AsyncIterator<String>>;
+  libraryHero: () => Promise<AsyncIterator<String>>;
 }
 
 export interface GamePreviousValues {
@@ -769,8 +945,16 @@ export interface GamePreviousValues {
   playtime2Weeks: Int;
   playtimeForever: Int;
   owners: String;
-  logoImageUrl: String;
-  heroImageUrl: String;
+  headerImage?: String;
+  backgroundImage?: String;
+  broadcastLeftImage?: String;
+  broadcastRightImage?: String;
+  capsuleSm?: String;
+  capsuleMd?: String;
+  capsuleLg?: String;
+  logo?: String;
+  libraryCapsule?: String;
+  libraryHero?: String;
 }
 
 export interface GamePreviousValuesPromise
@@ -792,8 +976,16 @@ export interface GamePreviousValuesPromise
   playtime2Weeks: () => Promise<Int>;
   playtimeForever: () => Promise<Int>;
   owners: () => Promise<String>;
-  logoImageUrl: () => Promise<String>;
-  heroImageUrl: () => Promise<String>;
+  headerImage: () => Promise<String>;
+  backgroundImage: () => Promise<String>;
+  broadcastLeftImage: () => Promise<String>;
+  broadcastRightImage: () => Promise<String>;
+  capsuleSm: () => Promise<String>;
+  capsuleMd: () => Promise<String>;
+  capsuleLg: () => Promise<String>;
+  logo: () => Promise<String>;
+  libraryCapsule: () => Promise<String>;
+  libraryHero: () => Promise<String>;
 }
 
 export interface GamePreviousValuesSubscription
@@ -815,8 +1007,16 @@ export interface GamePreviousValuesSubscription
   playtime2Weeks: () => Promise<AsyncIterator<Int>>;
   playtimeForever: () => Promise<AsyncIterator<Int>>;
   owners: () => Promise<AsyncIterator<String>>;
-  logoImageUrl: () => Promise<AsyncIterator<String>>;
-  heroImageUrl: () => Promise<AsyncIterator<String>>;
+  headerImage: () => Promise<AsyncIterator<String>>;
+  backgroundImage: () => Promise<AsyncIterator<String>>;
+  broadcastLeftImage: () => Promise<AsyncIterator<String>>;
+  broadcastRightImage: () => Promise<AsyncIterator<String>>;
+  capsuleSm: () => Promise<AsyncIterator<String>>;
+  capsuleMd: () => Promise<AsyncIterator<String>>;
+  capsuleLg: () => Promise<AsyncIterator<String>>;
+  logo: () => Promise<AsyncIterator<String>>;
+  libraryCapsule: () => Promise<AsyncIterator<String>>;
+  libraryHero: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Job {
