@@ -75,13 +75,37 @@ describe("gameReducer", () => {
     );
   });
 
-  it("should build the hero and logo image urls based on the game's appid and the base game image url", () => {
+  it("should build image urls based on the game's appid and the base game image url", () => {
     const { GAME_IMAGES_BASE_URL } = constants;
-    expect(result.heroImageUrl).toBe(
-      `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_hero.jpg`
+    expect(result.headerImage).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/header.jpg`
     );
-    expect(result.logoImageUrl).toBe(
+    expect(result.backgroundImage).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/page_bg_generated_v6b.jpg`
+    );
+    expect(result.broadcastLeftImage).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/broadcast_left_panel.jpg`
+    );
+    expect(result.broadcastRightImage).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/broadcast_right_panel.jpg`
+    );
+    expect(result.capsuleSm).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/capsule_231x87.jpg`
+    );
+    expect(result.capsuleMd).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/capsule_467x181.jpg`
+    );
+    expect(result.capsuleLg).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/capsule_616x353.jpg`
+    );
+    expect(result.logo).toBe(
       `${GAME_IMAGES_BASE_URL}${game["appid"]}/logo.png`
+    );
+    expect(result.libraryCapsule).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_600x900.jpg`
+    );
+    expect(result.libraryHero).toBe(
+      `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_hero.jpg`
     );
   });
 });

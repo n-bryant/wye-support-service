@@ -24,12 +24,13 @@ const MULTIPLAYER_TAGS = [
   "Multiplayer",
   "Online Co-Op",
   "Split Screen",
-  "4 Player Local"
+  "4 Player Local",
+  "Team-Based"
 ];
 
 const GAME_IMAGES_BASE_URL = "http://steamcdn-a.akamaihd.net/steam/apps/";
 
-const SLEEP_TIME = 1500;
+const SLEEP_TIME = 2000;
 
 const CRON_JOB_SCHEDULE_TIME = `0 3 * * *`;
 
