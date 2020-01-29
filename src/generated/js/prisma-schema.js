@@ -31,7 +31,9 @@ type Game {
   userRating: Int!
   playtime2Weeks: Int!
   playtimeForever: Int!
-  owners: String!
+  ownersFormatted: String!
+  ownersMin: Int!
+  ownersMax: Int!
   headerImage: String
   backgroundImage: String
   broadcastLeftImage: String
@@ -66,7 +68,9 @@ input GameCreateInput {
   userRating: Int!
   playtime2Weeks: Int!
   playtimeForever: Int!
-  owners: String!
+  ownersFormatted: String!
+  ownersMin: Int!
+  ownersMax: Int!
   headerImage: String
   backgroundImage: String
   broadcastLeftImage: String
@@ -115,8 +119,12 @@ enum GameOrderByInput {
   playtime2Weeks_DESC
   playtimeForever_ASC
   playtimeForever_DESC
-  owners_ASC
-  owners_DESC
+  ownersFormatted_ASC
+  ownersFormatted_DESC
+  ownersMin_ASC
+  ownersMin_DESC
+  ownersMax_ASC
+  ownersMax_DESC
   headerImage_ASC
   headerImage_DESC
   backgroundImage_ASC
@@ -155,7 +163,9 @@ type GamePreviousValues {
   userRating: Int!
   playtime2Weeks: Int!
   playtimeForever: Int!
-  owners: String!
+  ownersFormatted: String!
+  ownersMin: Int!
+  ownersMax: Int!
   headerImage: String
   backgroundImage: String
   broadcastLeftImage: String
@@ -201,7 +211,9 @@ input GameUpdateInput {
   userRating: Int
   playtime2Weeks: Int
   playtimeForever: Int
-  owners: String
+  ownersFormatted: String
+  ownersMin: Int
+  ownersMax: Int
   headerImage: String
   backgroundImage: String
   broadcastLeftImage: String
@@ -229,7 +241,9 @@ input GameUpdateManyMutationInput {
   userRating: Int
   playtime2Weeks: Int
   playtimeForever: Int
-  owners: String
+  ownersFormatted: String
+  ownersMin: Int
+  ownersMax: Int
   headerImage: String
   backgroundImage: String
   broadcastLeftImage: String
@@ -393,20 +407,36 @@ input GameWhereInput {
   playtimeForever_lte: Int
   playtimeForever_gt: Int
   playtimeForever_gte: Int
-  owners: String
-  owners_not: String
-  owners_in: [String!]
-  owners_not_in: [String!]
-  owners_lt: String
-  owners_lte: String
-  owners_gt: String
-  owners_gte: String
-  owners_contains: String
-  owners_not_contains: String
-  owners_starts_with: String
-  owners_not_starts_with: String
-  owners_ends_with: String
-  owners_not_ends_with: String
+  ownersFormatted: String
+  ownersFormatted_not: String
+  ownersFormatted_in: [String!]
+  ownersFormatted_not_in: [String!]
+  ownersFormatted_lt: String
+  ownersFormatted_lte: String
+  ownersFormatted_gt: String
+  ownersFormatted_gte: String
+  ownersFormatted_contains: String
+  ownersFormatted_not_contains: String
+  ownersFormatted_starts_with: String
+  ownersFormatted_not_starts_with: String
+  ownersFormatted_ends_with: String
+  ownersFormatted_not_ends_with: String
+  ownersMin: Int
+  ownersMin_not: Int
+  ownersMin_in: [Int!]
+  ownersMin_not_in: [Int!]
+  ownersMin_lt: Int
+  ownersMin_lte: Int
+  ownersMin_gt: Int
+  ownersMin_gte: Int
+  ownersMax: Int
+  ownersMax_not: Int
+  ownersMax_in: [Int!]
+  ownersMax_not_in: [Int!]
+  ownersMax_lt: Int
+  ownersMax_lte: Int
+  ownersMax_gt: Int
+  ownersMax_gte: Int
   headerImage: String
   headerImage_not: String
   headerImage_in: [String!]

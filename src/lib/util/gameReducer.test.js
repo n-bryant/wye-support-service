@@ -1,4 +1,9 @@
-const { gameReducer, getUserRatingPercentage } = require("./gameReducer");
+const {
+  gameReducer,
+  getUserRatingPercentage,
+  getOwnersMin,
+  getOwnersMax
+} = require("./gameReducer");
 const constants = require("../constants");
 
 describe("gameReducer", () => {
@@ -17,7 +22,7 @@ describe("gameReducer", () => {
     average_2weeks: 10,
     average_forever: 200,
     ccu: 42,
-    owners: 50
+    owners: "10,000 .. 20,000"
   };
   const result = gameReducer(game);
 
@@ -29,10 +34,6 @@ describe("gameReducer", () => {
     expect(result.name).toBe(game.name);
     expect(result.developers).toBe(game.developer);
     expect(result.publishers).toBe(game.publisher);
-  });
-
-  it("should set the returned owners to the game's value for that field", () => {
-    expect(result.owners).toBe(game.owners);
   });
 
   it("should set the playtime2Weeks value to the received average_2weeks value", () => {
@@ -107,5 +108,59 @@ describe("gameReducer", () => {
     expect(result.libraryHero).toBe(
       `${GAME_IMAGES_BASE_URL}${game["appid"]}/library_hero.jpg`
     );
+  });
+
+  it("should set the ownersFormatted value to the game's owners value or 'n/a' if not available", () => {
+    expect(result.ownersFormatted).toBe(game.owners);
+
+    let gameWithoutOwners = {
+      ...game,
+      owners: undefined
+    };
+    const expectedOwnersFormatted = "n/a";
+    expect(gameReducer(gameWithoutOwners).ownersFormatted).toBe(
+      expectedOwnersFormatted
+    );
+  });
+
+  it("should set the ownersMin and ownersMax values based on the owners value", () => {
+    expect(result.ownersMin).toBe(getOwnersMin(game.owners));
+    expect(result.ownersMax).toBe(getOwnersMax(game.owners));
+  });
+});
+
+describe("getOwnersMin", () => {
+  it("should return 0 if ownersRange is not truthy", () => {
+    expect(getOwnersMin(null)).toBe(0);
+  });
+
+  it("should return 0 if ownersRange is not a string", () => {
+    expect(getOwnersMin({ foo: "bar" })).toBe(0);
+  });
+
+  it("should return 0 if the owners range cannot split on ' .. '", () => {
+    expect(getOwnersMin("foo")).toBe(0);
+  });
+
+  it("should return an integer parsed from the first value of the provided range split on ' .. '", () => {
+    expect(getOwnersMin("10,000 .. 20,000")).toBe(10000);
+  });
+});
+
+describe("getOwnersMax", () => {
+  it("should return 0 if ownersRange is not truthy", () => {
+    expect(getOwnersMax(null)).toBe(0);
+  });
+
+  it("should return 0 if ownersRange is not a string", () => {
+    expect(getOwnersMax({ foo: "bar" })).toBe(0);
+  });
+
+  it("should return 0 if the owners range cannot split on ' .. '", () => {
+    expect(getOwnersMax("foo")).toBe(0);
+  });
+
+  it("should return an integer parsed from the second value of the provided range split on ' .. '", () => {
+    expect(getOwnersMax("10,000 .. 20,000")).toBe(20000);
   });
 });
