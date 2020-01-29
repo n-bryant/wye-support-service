@@ -2,6 +2,44 @@ const constants = require("../constants");
 const { GAME_IMAGES_BASE_URL } = constants;
 
 /**
+ * extracts the min amount of owners from a given owners range string
+ * @param {Object} ownersRange
+ * @returns {Int}
+ */
+const getOwnersMin = ownersRange => {
+  let min = 0;
+  if (ownersRange && typeof ownersRange === "string") {
+    const splitRange = ownersRange.split(" .. ");
+    if (splitRange.length == 2) {
+      const value = splitRange[0];
+      if (value) {
+        min = parseInt(value.replace(/,/g, ""));
+      }
+    }
+  }
+  return min;
+};
+
+/**
+ * extracts the max amount of owners from a given owners range string
+ * @param {Object} ownersRange
+ * @returns {Int}
+ */
+const getOwnersMax = ownersRange => {
+  let max = 0;
+  if (ownersRange && typeof ownersRange === "string") {
+    const splitRange = ownersRange.split(" .. ");
+    if (splitRange.length == 2) {
+      const value = ownersRange.split(" .. ")[1];
+      if (value) {
+        max = parseInt(value.replace(/,/g, ""));
+      }
+    }
+  }
+  return max;
+};
+
+/**
  * computes the user rating percentage for a game
  * @param {Int} positive - the number of positive ratings
  * @param {Int} negative - the number of negative ratings
@@ -34,7 +72,9 @@ const gameReducer = game => {
     userRating: getUserRatingPercentage(game.positive, game.negative),
     playtime2Weeks: game.average_2weeks,
     playtimeForever: game.average_forever,
-    owners: game.owners,
+    ownersFormatted: game.owners ? game.owners : "n/a",
+    ownersMin: getOwnersMin(game.owners),
+    ownersMax: getOwnersMax(game.owners),
     headerImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/header.jpg`,
     backgroundImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/page_bg_generated_v6b.jpg`,
     broadcastLeftImage: `${GAME_IMAGES_BASE_URL}${game["appid"]}/broadcast_left_panel.jpg`,
@@ -48,4 +88,9 @@ const gameReducer = game => {
   };
 };
 
-module.exports = { gameReducer, getUserRatingPercentage };
+module.exports = {
+  gameReducer,
+  getUserRatingPercentage,
+  getOwnersMin,
+  getOwnersMax
+};

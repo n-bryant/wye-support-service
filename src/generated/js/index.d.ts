@@ -169,8 +169,12 @@ export type GameOrderByInput =
   | "playtime2Weeks_DESC"
   | "playtimeForever_ASC"
   | "playtimeForever_DESC"
-  | "owners_ASC"
-  | "owners_DESC"
+  | "ownersFormatted_ASC"
+  | "ownersFormatted_DESC"
+  | "ownersMin_ASC"
+  | "ownersMin_DESC"
+  | "ownersMax_ASC"
+  | "ownersMax_DESC"
   | "headerImage_ASC"
   | "headerImage_DESC"
   | "backgroundImage_ASC"
@@ -373,20 +377,36 @@ export interface GameWhereInput {
   playtimeForever_lte?: Int;
   playtimeForever_gt?: Int;
   playtimeForever_gte?: Int;
-  owners?: String;
-  owners_not?: String;
-  owners_in?: String[] | String;
-  owners_not_in?: String[] | String;
-  owners_lt?: String;
-  owners_lte?: String;
-  owners_gt?: String;
-  owners_gte?: String;
-  owners_contains?: String;
-  owners_not_contains?: String;
-  owners_starts_with?: String;
-  owners_not_starts_with?: String;
-  owners_ends_with?: String;
-  owners_not_ends_with?: String;
+  ownersFormatted?: String;
+  ownersFormatted_not?: String;
+  ownersFormatted_in?: String[] | String;
+  ownersFormatted_not_in?: String[] | String;
+  ownersFormatted_lt?: String;
+  ownersFormatted_lte?: String;
+  ownersFormatted_gt?: String;
+  ownersFormatted_gte?: String;
+  ownersFormatted_contains?: String;
+  ownersFormatted_not_contains?: String;
+  ownersFormatted_starts_with?: String;
+  ownersFormatted_not_starts_with?: String;
+  ownersFormatted_ends_with?: String;
+  ownersFormatted_not_ends_with?: String;
+  ownersMin?: Int;
+  ownersMin_not?: Int;
+  ownersMin_in?: Int[] | Int;
+  ownersMin_not_in?: Int[] | Int;
+  ownersMin_lt?: Int;
+  ownersMin_lte?: Int;
+  ownersMin_gt?: Int;
+  ownersMin_gte?: Int;
+  ownersMax?: Int;
+  ownersMax_not?: Int;
+  ownersMax_in?: Int[] | Int;
+  ownersMax_not_in?: Int[] | Int;
+  ownersMax_lt?: Int;
+  ownersMax_lte?: Int;
+  ownersMax_gt?: Int;
+  ownersMax_gte?: Int;
   headerImage?: String;
   headerImage_not?: String;
   headerImage_in?: String[] | String;
@@ -617,7 +637,9 @@ export interface GameCreateInput {
   userRating: Int;
   playtime2Weeks: Int;
   playtimeForever: Int;
-  owners: String;
+  ownersFormatted: String;
+  ownersMin: Int;
+  ownersMax: Int;
   headerImage?: String;
   backgroundImage?: String;
   broadcastLeftImage?: String;
@@ -651,7 +673,9 @@ export interface GameUpdateInput {
   userRating?: Int;
   playtime2Weeks?: Int;
   playtimeForever?: Int;
-  owners?: String;
+  ownersFormatted?: String;
+  ownersMin?: Int;
+  ownersMax?: Int;
   headerImage?: String;
   backgroundImage?: String;
   broadcastLeftImage?: String;
@@ -679,7 +703,9 @@ export interface GameUpdateManyMutationInput {
   userRating?: Int;
   playtime2Weeks?: Int;
   playtimeForever?: Int;
-  owners?: String;
+  ownersFormatted?: String;
+  ownersMin?: Int;
+  ownersMax?: Int;
   headerImage?: String;
   backgroundImage?: String;
   broadcastLeftImage?: String;
@@ -855,7 +881,9 @@ export interface Game {
   userRating: Int;
   playtime2Weeks: Int;
   playtimeForever: Int;
-  owners: String;
+  ownersFormatted: String;
+  ownersMin: Int;
+  ownersMax: Int;
   headerImage?: String;
   backgroundImage?: String;
   broadcastLeftImage?: String;
@@ -884,7 +912,9 @@ export interface GamePromise extends Promise<Game>, Fragmentable {
   userRating: () => Promise<Int>;
   playtime2Weeks: () => Promise<Int>;
   playtimeForever: () => Promise<Int>;
-  owners: () => Promise<String>;
+  ownersFormatted: () => Promise<String>;
+  ownersMin: () => Promise<Int>;
+  ownersMax: () => Promise<Int>;
   headerImage: () => Promise<String>;
   backgroundImage: () => Promise<String>;
   broadcastLeftImage: () => Promise<String>;
@@ -915,7 +945,9 @@ export interface GameSubscription
   userRating: () => Promise<AsyncIterator<Int>>;
   playtime2Weeks: () => Promise<AsyncIterator<Int>>;
   playtimeForever: () => Promise<AsyncIterator<Int>>;
-  owners: () => Promise<AsyncIterator<String>>;
+  ownersFormatted: () => Promise<AsyncIterator<String>>;
+  ownersMin: () => Promise<AsyncIterator<Int>>;
+  ownersMax: () => Promise<AsyncIterator<Int>>;
   headerImage: () => Promise<AsyncIterator<String>>;
   backgroundImage: () => Promise<AsyncIterator<String>>;
   broadcastLeftImage: () => Promise<AsyncIterator<String>>;
@@ -944,7 +976,9 @@ export interface GamePreviousValues {
   userRating: Int;
   playtime2Weeks: Int;
   playtimeForever: Int;
-  owners: String;
+  ownersFormatted: String;
+  ownersMin: Int;
+  ownersMax: Int;
   headerImage?: String;
   backgroundImage?: String;
   broadcastLeftImage?: String;
@@ -975,7 +1009,9 @@ export interface GamePreviousValuesPromise
   userRating: () => Promise<Int>;
   playtime2Weeks: () => Promise<Int>;
   playtimeForever: () => Promise<Int>;
-  owners: () => Promise<String>;
+  ownersFormatted: () => Promise<String>;
+  ownersMin: () => Promise<Int>;
+  ownersMax: () => Promise<Int>;
   headerImage: () => Promise<String>;
   backgroundImage: () => Promise<String>;
   broadcastLeftImage: () => Promise<String>;
@@ -1006,7 +1042,9 @@ export interface GamePreviousValuesSubscription
   userRating: () => Promise<AsyncIterator<Int>>;
   playtime2Weeks: () => Promise<AsyncIterator<Int>>;
   playtimeForever: () => Promise<AsyncIterator<Int>>;
-  owners: () => Promise<AsyncIterator<String>>;
+  ownersFormatted: () => Promise<AsyncIterator<String>>;
+  ownersMin: () => Promise<AsyncIterator<Int>>;
+  ownersMax: () => Promise<AsyncIterator<Int>>;
   headerImage: () => Promise<AsyncIterator<String>>;
   backgroundImage: () => Promise<AsyncIterator<String>>;
   broadcastLeftImage: () => Promise<AsyncIterator<String>>;

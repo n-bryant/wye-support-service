@@ -35,7 +35,11 @@ type Game {
   # playtime since March 2009 in minutes
   playtimeForever: Int!
   # range of owner count
-  owners: String!
+  ownersFormatted: String!
+  # min owners count
+  ownersMin: Int!
+  # max owners count
+  ownersMax: Int!
   # location of the game's header image
   headerImage: String
   # game page background image location
