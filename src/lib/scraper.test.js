@@ -13,8 +13,8 @@ jest.mock("./util/getGameList");
 const getCategoryTypeList = require("./util/getCategoryTypeList");
 jest.mock("./util/getCategoryTypeList");
 
-const getGameIdsForCategory = require("./util/getGameIdsForCategory");
-jest.mock("./util/getGameIdsForCategory");
+const { getGameIdsForCategories } = require("./util/getGameIdsForCategories");
+jest.mock("./util/getGameIdsForCategories");
 
 const getCategoryTypesForGame = require("./util/getCategoryTypesForGame");
 jest.mock("./util/getCategoryTypesForGame");
@@ -67,7 +67,7 @@ describe("runCron", () => {
     expect(getCategoryTypeList).not.toHaveBeenCalled();
 
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
-    getGameIdsForCategory
+    getGameIdsForCategories
       .mockImplementationOnce(() => Promise.resolve(tagList))
       .mockImplementationOnce(() => Promise.resolve(genreList));
     await runCron();
@@ -79,18 +79,18 @@ describe("runCron", () => {
 
   it("should retrieve lists of game IDs by tag and genre if the games list has length", async () => {
     await runCron();
-    expect(getGameIdsForCategory).not.toHaveBeenCalled();
+    expect(getGameIdsForCategories).not.toHaveBeenCalled();
 
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
     getCategoryTypeList
       .mockImplementationOnce(() => Promise.resolve(tagList))
       .mockImplementationOnce(() => Promise.resolve(genreList));
     await runCron();
-    expect(getGameIdsForCategory).toHaveBeenCalledWith(
+    expect(getGameIdsForCategories).toHaveBeenCalledWith(
       STEAM_SPY_CATEGORIES.TAG.name,
       tagList
     );
-    expect(getGameIdsForCategory).toHaveBeenCalledWith(
+    expect(getGameIdsForCategories).toHaveBeenCalledWith(
       STEAM_SPY_CATEGORIES.GENRE.name,
       genreList
     );
@@ -113,7 +113,7 @@ describe("runCron", () => {
     getGameList.mockReset();
     createJob.mockImplementationOnce(() => Promise.resolve({ id }));
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
-    getGameIdsForCategory
+    getGameIdsForCategories
       .mockImplementationOnce(() => Promise.resolve(tagList))
       .mockImplementationOnce(() => Promise.resolve({}));
     await runCron();
@@ -125,7 +125,7 @@ describe("runCron", () => {
     expect(getCategoryTypesForGame).not.toHaveBeenCalled();
 
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
-    getGameIdsForCategory
+    getGameIdsForCategories
       .mockImplementationOnce(() => Promise.resolve(tagList))
       .mockImplementationOnce(() => Promise.resolve(genreList));
     await runCron();
@@ -144,7 +144,7 @@ describe("runCron", () => {
     getIsMultiplayerGame.mockReset();
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
     getIsMultiplayerGame.mockImplementationOnce(() => true);
-    getGameIdsForCategory
+    getGameIdsForCategories
       .mockImplementationOnce(() => Promise.resolve(multiplayerTagList))
       .mockImplementationOnce(() => Promise.resolve(genreList));
     await runCron();
@@ -157,7 +157,7 @@ describe("runCron", () => {
     getGameList.mockReset();
     getGameList.mockImplementationOnce(() => Promise.resolve(gameList));
     createJob.mockImplementationOnce(() => Promise.resolve({ id }));
-    getGameIdsForCategory
+    getGameIdsForCategories
       .mockImplementationOnce(() => Promise.resolve(tagList))
       .mockImplementationOnce(() => Promise.resolve(genreList));
     await runCron();

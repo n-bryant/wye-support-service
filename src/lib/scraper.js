@@ -3,7 +3,7 @@ const completeJob = require("./util/completeJob");
 const writeGameData = require("./util/writeGameData");
 const getGameList = require("./util/getGameList");
 const getCategoryTypeList = require("./util/getCategoryTypeList");
-const getGameIdsForCategory = require("./util/getGameIdsForCategory");
+const { getGameIdsForCategories } = require("./util/getGameIdsForCategories");
 const getCategoryTypesForGame = require("./util/getCategoryTypesForGame");
 const getIsMultiplayerGame = require("./util/getIsMultiplayerGame");
 const getIsSteamTestAppName = require("./util/getIsSteamTestAppName");
@@ -33,14 +33,14 @@ const runCron = async () => {
   if (games.length) {
     // collect game IDs from each tag endpoint
     const tagList = await getCategoryTypeList(STEAM_SPY_CATEGORIES.TAG);
-    const gameIdsByTag = await getGameIdsForCategory(
+    const gameIdsByTag = await getGameIdsForCategories(
       STEAM_SPY_CATEGORIES.TAG.name,
       tagList
     );
 
     // collect game IDs from each genre endpoint
     const genreList = await getCategoryTypeList(STEAM_SPY_CATEGORIES.GENRE);
-    const gameIdsByGenre = await getGameIdsForCategory(
+    const gameIdsByGenre = await getGameIdsForCategories(
       STEAM_SPY_CATEGORIES.GENRE.name,
       genreList
     );
@@ -58,11 +58,11 @@ const runCron = async () => {
       }
 
       if (games[i] && games[i].appid) {
-        // add tags to game record
+        // add tags to game record, setting ranking
         games[i].tags = getCategoryTypesForGame(
           games[i].appid.toString(),
           gameIdsByTag
-        );
+        ).map((item, index) => `${item}%%rank%%${index}`);
 
         // add genres to game record
         games[i].genres = getCategoryTypesForGame(
